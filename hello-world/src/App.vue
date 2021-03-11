@@ -24,12 +24,13 @@
 <h2 v-else-if="num < 0">The number is Negative</h2>
 <h2 v-else-if="num > 0">The number is Positive</h2>
 <h2 v-else>Not a number</h2>
-
+<!-- 
 <template v-if="display">
   <h2>Fatoom</h2>
   <h2>SWE</h2>
   <h2>Full Stack</h2>
-</template>
+</template> -->
+<h2 v-show="display">Using v-show</h2>
 
 </template>
 
