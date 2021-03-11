@@ -10,6 +10,11 @@
 <h2 v-bind:class="isPromoted && 'promoted'">Promoted Movie</h2>
 <h2 v-bind:class="isSoldOut? 'sold-out' : 'new'">Sold out Movie</h2>
 <h2 v-bind:class="[isPromoted && 'promoted', isSoldOut? 'sold-out' : 'new']">Array conditional Movie</h2>
+<h2 v-bind:class="{
+  promoted: isPromoted,
+  new: !isSoldOut,
+  'sold-out': isSoldOut
+}">Object Conditional Movie</h2>
 </template>
 
 <script>
