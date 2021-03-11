@@ -3,7 +3,8 @@
   {{greet}} {{name}}
 </div>
 <div v-html="position"></div>
-  
+<h2 v-bind:id="headingId">Heading</h2>
+<button v-bind:disabled="isDisabled">Bind</button> 
 </template>
 
 <script>
@@ -14,7 +15,9 @@ export default {
     return {
       greet: "Hello",
       name: "Fatoom",
-      position: "<b>Software Engineer</b>"
+      position: "<b>Software Engineer</b>",
+      headingId: "heading",
+      isDisabled: false
     };
   },
 };
