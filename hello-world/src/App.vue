@@ -20,6 +20,17 @@
   'font-size': headerSize + 'px'
 }">Inline Style</h2>
 <h2 v-bind:style="headerStyle">Style Object</h2>
+<h2 v-if="num === 0">The number is zero</h2>
+<h2 v-else-if="num < 0">The number is Negative</h2>
+<h2 v-else-if="num > 0">The number is Positive</h2>
+<h2 v-else>Not a number</h2>
+
+<template v-if="display">
+  <h2>Fatoom</h2>
+  <h2>SWE</h2>
+  <h2>Full Stack</h2>
+</template>
+
 </template>
 
 <script>
@@ -42,7 +53,9 @@ export default {
         color: "orange",
         fontSize: '50px',
         padding: '20px'
-      }
+      },
+      num: "5nnn",
+      display: true
     };
   },
 };
