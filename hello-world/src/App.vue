@@ -1,5 +1,9 @@
 <template>
+<div>
   {{greet}} {{name}}
+</div>
+<div v-text="position"></div>
+  
 </template>
 
 <script>
@@ -10,6 +14,7 @@ export default {
     return {
       greet: "Hello",
       name: "Fatoom",
+      position: "Software Engineer"
     };
   },
 };
