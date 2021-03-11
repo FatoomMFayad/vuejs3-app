@@ -2,7 +2,7 @@
 <div>
   {{greet}} {{name}}
 </div>
-<div v-text="position"></div>
+<div v-html="position"></div>
   
 </template>
 
@@ -14,7 +14,7 @@ export default {
     return {
       greet: "Hello",
       name: "Fatoom",
-      position: "Software Engineer"
+      position: "<b>Software Engineer</b>"
     };
   },
 };
