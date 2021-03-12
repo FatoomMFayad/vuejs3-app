@@ -25,7 +25,12 @@
 <h2 v-else-if="num > 0">The number is Positive</h2>
 <h2 v-else>Not a number</h2>
 <h2 v-show="display">Using v-show</h2>
-<h2 v-for="(name, index) in names" :key="name">{{index}} {{ name }}</h2>
+
+  <template v-for="(name, index) in names" :key="name">
+    <h2 v-if="name === 'Fatoom'">
+      {{index}} {{ name }}
+    </h2>    
+  </template>
 <h2 v-for="name in fullNames" :key="name.first">{{ name.first}} {{name.last}}</h2>
 <div v-for="actor in actors" :key="actor.name">
   <h2>{{actor.name}}</h2> 
