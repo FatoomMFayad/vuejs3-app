@@ -1,16 +1,36 @@
 <template>
-  <h2>{{ name }}</h2>
   <div>
-    <button @click="changeName(), increment(1)">Change Name</button>
+    <pre>
+      {{ JSON.stringify(formValues, null, 2)}}
+    </pre>
   </div>
-  <h2>{{ count }}</h2>
-  <div>
-     <button @click="increment( 1, $event )">Increment 1 </button>
-     <button @click="increment( 5 )">Increment 5</button>
-     <button @click="decrement( 1 )">Decrement 1</button>
-     <button @click="decrement( 5 )">Decrement 5</button>
-  </div>
-  
+  <form>
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" v-model="formValues.name"/>
+    </div>
+    <div>
+      <label for="profile">Profile Summary</label>
+      <textarea id="profile" v-model="formValues.profileSummary"/>
+    </div>
+    <div>
+      <label for="country">Country</label>
+      <select id="country" v-model="formValues.country">
+        <option value="">Select a country</option>
+        <option value="india">India</option>
+        <option value="vietnam">Vietnam</option>
+        <option value="singapore">Singapore</option>
+      </select>
+    </div>
+    <div>
+      <label for="job-location">Job Location</label>
+      <select id="job-location" multiple v-model="formValues.jobLocation">
+        <option value="india">India</option>
+        <option value="vietnam">Vietnam</option>
+        <option value="singapore">Singapore</option>
+      </select>
+    </div>
+  </form>  
 </template>
 
 <script>
@@ -19,21 +39,16 @@ export default {
   name: 'App',
   data(){
     return {
-      name: "Fatoom",
-      count: 0
+      formValues: {
+        name: '',
+        profileSummary: '',
+        country: '',
+        jobLocation: []
+      }
     };
   },
   methods: {
-    changeName(event){
-      this.name= 'Hanan';
-      console.log('Event', event)
-    },
-    increment( num) {
-       this.count+= num
-    },
-    decrement( num ) {
-      return this.count-= num
-    },
+
   },
 };
 </script>
@@ -47,19 +62,28 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.underline {
-  text-decoration: underline;
+
+label {
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 5px;
 }
 
-.promoted {
-  font-style: italic;
+input + label {
+  font-weight: bold;
+  display: inline-flex;
+  margin-right: 20px;
 }
-
-.new{
-  color: olivedrab;
-}
-
-.sold-out {
-  color: red;
+input[type='text'],
+textarea,
+select{
+  display: block;
+  width: 400px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
 }
 </style>
