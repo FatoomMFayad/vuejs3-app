@@ -3,6 +3,8 @@
   <h2>Computed Full Name - {{ fullName}}</h2>
   <button @click="items.push({id: 4, title: 'Keyboard', price: 50})">Add Item</button>
   <h2>Computed Total - {{ total }}</h2>
+  <h2>Method Total - {{ getTotal() }}</h2>
+  <input type="text" v-model="country"/>
 </template>
 
 <script>
@@ -30,10 +32,13 @@ export default {
           price: 300,
         },
       ],
+      country: ''
     };
   },
   methods: {
-
+    getTotal() {
+      return `${this.items.reduce((total, curr) => (total = total + curr.price), 0)}`
+    }
   },
   computed: {
     fullName() {
