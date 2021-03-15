@@ -30,6 +30,33 @@
         <option value="singapore">Singapore</option>
       </select>
     </div>
+    <div>
+      <input type="checkbox" id="remoteWork" v-model="formValues.remoteWork" true-value="yes" false-value="no"/>
+      <label for="remoteWork">Open to remote Work?</label>
+    </div>
+    <div>
+      <label>Skill Set</label>
+      <input type="checkbox" id="html" value="html" v-model="formValues.skillSet"/>
+      <label for="html">HTML</label>
+      <input type="checkbox" id="css" value="css" v-model="formValues.skillSet"/>
+      <label for="css">CSS</label>
+      <input type="checkbox" id="javascript" value="javascript" v-model="formValues.skillSet"/>
+      <label for="javascript">JavaScript</label>
+    </div>
+    <div>
+      <label>Years of Experience</label>
+      <input type="radio" id="0-2" value="0-2" v-model="formValues.yearsOfExperience"/>
+      <label for="0-2">0-2</label>
+      <input type="radio" id="3-5" value="3-4" v-model="formValues.yearsOfExperience"/>
+      <label for="3-5">3-5</label>
+      <input type="radio" id="6-10" value="6-10" v-model="formValues.yearsOfExperience"/>
+      <label for="6-10">6-10</label>
+      <input type="radio" id="10+" value="10+" v-model="formValues.yearsOfExperience"/>
+      <label for="10+">10+</label>
+    </div>
+    <div>
+      <button @click="submitForm($event)">Submit</button>
+    </div>
   </form>  
 </template>
 
@@ -43,11 +70,18 @@ export default {
         name: '',
         profileSummary: '',
         country: '',
-        jobLocation: []
+        jobLocation: [],
+        remoteWork: "no",
+        skillSet: [],
+        yearsOfExperience: ''
       }
     };
   },
   methods: {
+    submitForm(event) {
+      event.preventDefault();
+      console.log('Form Values', this.formValues);
+    }
 
   },
 };
