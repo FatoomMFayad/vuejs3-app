@@ -1,14 +1,10 @@
 <template>
-  <h2>Full Name - {{firstName}} {{lastName}}</h2>
-  <h2>Computed Full Name - {{ fullName}}</h2>
-  <button @click="changeFullName()">Change Fullname</button>
-  <button @click="items.push({id: 4, title: 'Keyboard', price: 50})">Add Item</button>
-  <h2>Computed Total - {{ total }}</h2>
-  <h2>Method Total - {{ getTotal() }}</h2>
-  <input type="text" v-model="country"/>
-  <template v-for="item  in expensiveItems" :key="item.id">
-    <h2>{{item.title}} {{item.price}}</h2>
-  </template>
+  <h2>Volume Tracker (0-20)</h2>
+  <h3>Current Volume - {{ volume }}</h3>
+  <div>
+    <button @click="volume+=2">Increase Volume</button>
+    <button @click="volume-=2">Decrease Volume</button>
+  </div>
 </template>
 
 <script>
@@ -17,55 +13,22 @@ export default {
   name: 'App',
   data(){
     return {
-      firstName: 'Fatoom',
-      lastName: 'Fayad',
-      items:[
-        {
-          id: 1,
-          title: 'TV',
-          price: 100,
-        },
-        {
-          id: 2,
-          title: 'Phone',
-          price: 200,
-        },
-        {
-          id: 3,
-          title: 'Laptop',
-          price: 300,
-        },
-      ],
-      country: ''
+      volume: 0
     };
   },
   methods: {
-    getTotal() {
-      return `${this.items.reduce((total, curr) => (total = total + curr.price), 0)}`
-    },
-    changeFullName(){
-      this.fullName = 'Hanan Fayad'
-    }
+   
   },
   computed: {
-    fullName:{
-      get(){
-        return `${this.firstName} ${this.lastName}`
-      },
-      set(value){
-        const names = value.split(' ')
-        this.firstName = names[0];
-        this.lastName = names[1];
-
+    
+  },  
+  watch:{
+    volume(newValue, oldValue) {
+      if(newValue > oldValue && newValue === 16) {
+        alert('listening to a high volume for a long time may damage your hearing')
       }
-    },
-    total() {
-      return `${this.items.reduce((total, curr) => (total = total + curr.price), 0)}`
-    },
-    expensiveItems() {
-      return this.items.filter( item=> item.price > 100)
     }
-  }
+  }  
 };
 </script>
 
